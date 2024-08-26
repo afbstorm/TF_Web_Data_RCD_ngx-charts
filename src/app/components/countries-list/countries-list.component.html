@@ -1,0 +1,14 @@
+@if (countries.length > 0) {
+  <div>
+    <h2>Countries that speak {{ language }}</h2>
+    <ul>
+      @for (country of countries; track country) {
+        <li (click)="onSelectCountry(country)">
+          {{ country.name.common }}
+        </li>
+      }
+    </ul>
+  </div>
+} @else {
+  Loading ...
+}

@@ -1,21 +1,27 @@
 <div style="display: flex; justify-content: space-around; flex-wrap: wrap">
-  <div style="width: 55%; margin-bottom: 2rem">
+  @if (europeanPopulationData.length > 0) {
+    <div style="width: 55%; margin-bottom: 2rem">
 
-    <h4>25 premiers pays d'europe et leur population</h4>
-    <ngx-charts-bar-vertical
-      [view]="view"
-      [results]="europeanPopulationData"
-      [xAxis]="showXAxis"
-      [yAxis]="showYAxis"
-      [showXAxisLabel]="showXAxisLabel"
-      [showYAxisLabel]="showYAxisLabel"
-      [xAxisLabel]="xAxisLabel"
-      [yAxisLabel]="yAxisLabelEuPopulation"
-    >
-    </ngx-charts-bar-vertical>
+      <h4>25 premiers pays d'europe et leur population</h4>
+      <ngx-charts-bar-vertical
+        [view]="view"
+        [results]="europeanPopulationData"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabelEuPopulation"
+        (select)="onSelect($event)">
+        >
+      </ngx-charts-bar-vertical>
 
-  </div>
+    </div>
+  } @else {
+    Loading datas ...
+  }
 
+  @if (regionData.length > 0) {
   <div style="width: 55%; margin-bottom: 2rem">
 
     <h4>50 premiers pays et leur superficie</h4>
@@ -26,8 +32,60 @@
       [labels]="showLabels"
       [doughnut]="doughnut"
       [explodeSlices]="explodeSlices"
+      (select)="onSelect($event)">
     >
     </ngx-charts-pie-chart>
 
   </div>
+  } @else {
+    Loading datas ...
+  }
+  @if (topPopulationData.length > 0) {
+  <div style="width: 55%; margin-bottom: 2rem;">
+    <h3>Top 10 pays par population</h3>
+    <ngx-charts-tree-map
+      [view]="view"
+      [scheme]="'picnic'"
+      [results]="topPopulationData"
+      (select)="onSelect($event)">
+    </ngx-charts-tree-map>
+  </div>
+  } @else {
+  Loading datas ...
+}
+  @if (topAreaData.length > 0) {
+  <div style="width: 55%; margin-bottom: 2rem;">
+    <h3>Top 20 pays par superficie</h3>
+    <ngx-charts-number-card
+      [view]="view"
+      [scheme]="'horizon'"
+      [results]="topAreaData"
+      [cardColor]="'#1E90FF'"
+      [textColor]="'#fff'"
+      [emptyColor]="'#aaa'"
+      [valueFormatting]="formatTooltipText"
+      (select)="onSelect($event)">
+    </ngx-charts-number-card>
+  </div>
+  } @else {
+  Loading datas ...
+}
+  @if (topLanguageData.length > 0) {
+  <div style="width: 55%; margin-bottom: 2rem;">
+    <h3>Top 10 Spoken Languages (Horizontal Bar Chart)</h3>
+    <ngx-charts-bar-horizontal
+      [view]="view"
+      [scheme]="'neons'"
+      [results]="topLanguageData"
+      [legend]="showLegend"
+      [showXAxisLabel]="true"
+      [xAxisLabel]="'Number of Countries'"
+      [showYAxisLabel]="true"
+      [yAxisLabel]="'Languages'"
+      (select)="onSelect($event)">
+    </ngx-charts-bar-horizontal>
+  </div>
+  } @else {
+  Loading datas ...
+}
 </div>
