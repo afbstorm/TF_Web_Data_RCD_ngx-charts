@@ -78,7 +78,6 @@ export class CountriesComponent {
     })
   }
   onSelect(event: any): void {
-    // Check if the selection was from the language chart or country chart
     if (this.topLanguageData.some(language => language.name === event.name)) {
       this.router.navigate(['/language', event.name]);
     } else {
