@@ -1,0 +1,33 @@
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap">
+  <div style="width: 55%; margin-bottom: 2rem">
+
+    <h4>25 premiers pays d'europe et leur population</h4>
+    <ngx-charts-bar-vertical
+      [view]="view"
+      [results]="europeanPopulationData"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabelEuPopulation"
+    >
+    </ngx-charts-bar-vertical>
+
+  </div>
+
+  <div style="width: 55%; margin-bottom: 2rem">
+
+    <h4>50 premiers pays et leur superficie</h4>
+    <ngx-charts-pie-chart
+      [view]="view"
+      [results]="regionData"
+      [legend]="showLegend"
+      [labels]="showLabels"
+      [doughnut]="doughnut"
+      [explodeSlices]="explodeSlices"
+    >
+    </ngx-charts-pie-chart>
+
+  </div>
+</div>
